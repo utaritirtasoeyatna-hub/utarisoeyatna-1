@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- ── TOP BAR ── -->
+    <div class="topbar">
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+        <span class="icon">🌙</span>
+        <span class="label">Dark Mode</span>
+      </button>
+    </div>
+
+    <!-- ── GREETING CARD ── -->
+    <div class="greeting-card">
+      <div class="datetime">
+        <span id="dateDisplay"></span>
+      </div>
+      <div class="time-display" id="timeDisplay">--:--:-- --</div>
+      <div class="greeting-text" id="greetingText">Hello! 👋</div>
+      <div class="greeting-actions">
+        <!-- Challenge: Custom Name -->
+        <div class="name-input-row">
+          <input
+            type="text"
+            id="nameInput"
+            placeholder="Enter your name…"
+            maxlength="40"
+          />
+          <button class="btn-ghost" id="saveName">Save Name</button>
+          <button class="btn-ghost" id="clearName">Clear</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MAIN GRID ── -->
+    <div class="main-grid">
+
+      <!-- ── FOCUS TIMER ── -->
+      <div class="card">
+        <div class="card-title">
+          <span class="icon">⏱️</span> Focus Timer
+        </div>
+
+        <div class="timer-display">
+          <div class="timer-circle">
+            <div class="timer-time" id="timerTime">25:00</div>
+            <div class="timer-label">Focus</div>
+          </div>
+        </div>
+
+        <div class="timer-progress">
+          <div class="timer-progress-bar" id="timerProgressBar"></div>
+        </div>
+
+        <div class="timer-controls" style="margin-top:16px;">
+          <button class="btn-primary" id="startTimer">▶ Start</button>
+          <button class="btn-secondary" id="stopTimer">⏸ Pause</button>
+          <button class="btn-secondary" id="resetTimer">↺ Reset</button>
+        </div>
+
+        <p class="timer-status" id="timerStatus">Ready to focus</p>
+
+        <!-- Challenge: Change Pomodoro Time -->
+        <div class="timer-custom">
+          <label>Custom Duration (minutes)</label>
+          <div class="timer-custom-row">
+            <input
+              type="number"
+              id="customMinutes"
+              min="1"
+              max="180"
+              value="25"
+            />
+            <button class="btn-primary" id="applyTime">Apply</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TO-DO LIST ── -->
+      <div class="card">
+        <div class="card-title">
+          <span class="icon">📝</span> To-Do List
+        </div>
+
+        <div class="todo-add-row">
+          <input
+            type="text"
+            id="todoInput"
+            class="todo-input"
+            placeholder="Add a new task…"
+            maxlength="200"
+          />
+          <button class="btn-primary" id="addTodo">Add</button>
+        </div>
+
+        <p class="duplicate-warning" id="duplicateWarning">
+          ⚠️ This task already exists!
+        </p>
+
+        <!-- Challenge: Sort Tasks -->
+        <div class="todo-controls">
+          <span style="font-size:12px;color:var(--text-muted);align-self:center;">Sort:</span>
+          <button class="btn-sort active" data-sort="default">Default</button>
+          <button class="btn-sort" data-sort="asc">A → Z</button>
+          <button class="btn-sort" data-sort="done">Undone First</button>
+        </div>
+
+        <ul class="todo-list" id="todoList"></ul>
+      </div>
+
+      <!-- ── QUICK LINKS (spans full width on mobile, 2 cols on desktop) ── -->
+      <div class="card" style="grid-column: 1 / -1;">
+        <div class="card-title">
+          <span class="icon">🔗</span> Quick Links
+        </div>
+
+        <div class="links-add-row">
+          <input
+            type="text"
+            id="linkName"
+            class="name-field"
+            placeholder="Name"
+            maxlength="30"
+          />
+          <input
+            type="url"
+            id="linkUrl"
+            class="url-field"
+            placeholder="https://example.com"
+          />
+          <button class="btn-primary" id="addLink">Add Link</button>
+        </div>
+
+        <div class="links-grid" id="linksGrid"></div>
+      </div>
+
+    </div><!-- /.main-grid -->
+  </div><!-- /.container -->
+
+  <!-- ── NOTIFICATION TOAST ── -->
+  <div class="notification" id="notification">
+    <span class="notif-icon">✅</span>
+    <span class="notif-text"></span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
